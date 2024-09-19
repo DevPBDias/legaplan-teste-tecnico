@@ -1,0 +1,27 @@
+$primary-color: #FFFFFF;
+$secondary-color: #F7F9FD;
+
+$btn-primary-color: linear-gradient(90deg, #0796D3 0%, #53C0F0 68.65%);
+$btn-secondary-color: linear-gradient(90deg, #D30707 0%, #F05353 68.65%);
+$btn-terciary-color: #E7EEFB;
+
+$text-primary-color: #000000;
+$text-secondary-color: rgba(0, 0, 0, 0.54);
+
+$border-primary-color: #D7DDE9;
+$border-secondary-color: #EAECF0;
+
+$border-radius-min: 8px;
+$border-radius-max: 16px;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  color: $text-primary-color;
+  background-color: $primary-color;
+}
+
+
+

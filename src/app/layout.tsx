@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter_Tight } from "next/font/google";
+import "./_base.scss";
 
 const inter_tight = Inter_Tight({
   weight: ["400", "700"],
