@@ -1,0 +1,57 @@
+header {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(215, 221, 233, 1);
+    margin-top: 24px;
+    margin-inline: 56px;
+    padding-bottom: 24px;
+    
+    nav {
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+
+        picture {
+            width: 150px;
+            height: 36px;
+        }
+    
+        h1 {
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 29.04px;
+            letter-spacing: -0.02em;
+            text-align: left;
+        }
+    
+        h4 {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 19.36px;
+            letter-spacing: -0.02em;
+            text-align: left;
+            color: rgba(0, 0, 0, 0.54);
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        margin-inline: 24px;
+
+        section {
+            flex-flow: column nowrap;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 8px;
+
+            h1 {
+                font-size: 16px;
+                line-height: 19.36px;
+            }
+        }
+    }
+}

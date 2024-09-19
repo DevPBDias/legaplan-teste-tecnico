@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Inter_Tight } from "next/font/google";
 import "./_base.scss";
+import Header from "@/components/header/Header";
 
 const inter_tight = Inter_Tight({
-  weight: ["400", "700"],
+  weight: ["400", "500", "700"],
   style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
@@ -21,7 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter_tight.className}>{children}</body>
+      <body className={inter_tight.className}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
