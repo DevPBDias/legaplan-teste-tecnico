@@ -9,13 +9,14 @@
     justify-items: center;
     align-items: flex-start;
     width: 450px;
+    height: fit-content;
     padding: 32px;
     gap: 32px;
     border-radius: 16px;
     box-shadow: 0px 24px 48px -12px rgba(16, 24, 40, 0.18);
-    background: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 1);
 
-    h3 {
+    .modal-title {
         font-size: 24px;
         font-weight: 500;
         line-height: 29.04px;
@@ -30,7 +31,7 @@
         justify-items: center;
         border: none;
 
-        label {
+        .label-modal {
             font-size: 16px;
             font-weight: 400;
             line-height: 19.36px;
@@ -38,7 +39,7 @@
             text-align: left;
         }
 
-        input {
+        .input-modal {
             width: 100%;
             height: 51px;
             padding: 16px ;
@@ -63,7 +64,7 @@
         }
     }
 
-    p {
+    .subtitle-modal {
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;
@@ -72,7 +73,7 @@
         color: rgba(0, 0, 0, 0.54);
     }
 
-    div {
+    .btns-container {
         width: 100%;
         display: flex;
         flex-flow: row nowrap;
@@ -99,17 +100,13 @@
     }
 }
 
-.display-modal {
-    display: none;
-}
-
 @media (max-width: 768px) {
-    section {
+    .modal-container {
         width: 100%;
         padding: 24px;
         box-shadow: none;
 
-        div {
+        .btns-container {
             flex-flow: column-reverse nowrap;
         }
     }

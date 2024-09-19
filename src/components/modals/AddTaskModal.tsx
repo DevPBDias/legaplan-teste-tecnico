@@ -11,12 +11,20 @@ const AddTaskModal = () => {
 
   return (
     <section className="modal-container">
-      <h3>Nova tarefa</h3>
+      <h3 className="modal-title">Nova tarefa</h3>
       <fieldset>
-        <label htmlFor="title">Título</label>
-        <input type="text" name="" id="title" placeholder="Digite" />
+        <label className="label-modal" htmlFor="title">
+          Título
+        </label>
+        <input
+          className="input-modal"
+          type="text"
+          name=""
+          id="title"
+          placeholder="Digite"
+        />
       </fieldset>
-      <div>
+      <div className="btns-container">
         <button type="button" onClick={() => setCallAddModal(!callAddModal)}>
           Cancelar
         </button>
