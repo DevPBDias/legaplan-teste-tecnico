@@ -7,7 +7,7 @@ const AddTaskBtn = () => {
   };
 
   return (
-    <button type="button" onClick={handleClick}>
+    <button type="button" className="add-task-btn" onClick={handleClick}>
       Adicionar tarefa
     </button>
   );
