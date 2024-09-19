@@ -1,0 +1,80 @@
+section {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-items: center;
+    align-items: flex-start;
+    width: 450px;
+    padding: 32px;
+    gap: 32px;
+    border-radius: 16px;
+    box-shadow: 0px 24px 48px -12px rgba(16, 24, 40, 0.18);
+
+
+
+    h3 {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 29.04px;
+        letter-spacing: -0.02em;
+        text-align: left;
+    }
+
+    fieldset {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-items: center;
+        border: none;
+
+        label {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 19.36px;
+            letter-spacing: -0.02em;
+            text-align: left;
+        }
+
+        input {
+            width: 386px;
+            height: 51px;
+            padding: 16px ;
+            gap: 16px;
+            border-radius: 8px ;
+            border: 1px solid #D7DDE9;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 19.36px;
+            letter-spacing: -0.02em;
+            text-align: left;
+            margin-top: 8px;
+
+
+            &::placeholder {
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 19.36px;
+                letter-spacing: -0.02em;
+                text-align: left;
+            }
+        }
+    }
+
+    div {
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 16px;
+
+        button {
+            width: 185px;
+            height: 51px;
+            padding: 16px 24px;
+            border-radius: 8px ;
+            border: none;
+            background: #E7EEFB;
+        }
+
+        .add-btn {
+            background: linear-gradient(90deg, #0796D3 0%, #53C0F0 68.65%);
+            color: #FFFFFF;
+        }
+    }
+}

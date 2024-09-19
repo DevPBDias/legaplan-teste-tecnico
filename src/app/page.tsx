@@ -1,3 +1,17 @@
+import AddTaskModal from "@/components/modals/AddTaskModal";
+
 export default function Home() {
-  return <div>Hello World!</div>;
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100dvw",
+        height: "100dvh",
+      }}
+    >
+      <AddTaskModal />
+    </div>
+  );
 }
