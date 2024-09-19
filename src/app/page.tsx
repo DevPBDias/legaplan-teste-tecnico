@@ -1,10 +1,10 @@
 import AddTaskBtn from "@/components/addTaskBtn/AddTaskBtn";
-import TaskCard from "@/components/taskCard/TaskCard";
+import TaskList from "@/components/taskList/TaskList";
 
 export default function Home() {
   return (
     <main>
-      <TaskCard />
+      <TaskList />
       <AddTaskBtn />
     </main>
   );

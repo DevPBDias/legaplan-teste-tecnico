@@ -21,6 +21,9 @@ $box-shadow: 0px 24px 48px -12px rgba(16, 24, 40, 0.18);
   margin: 0;
   text-decoration: none;
   color: $text-primary-color;
+}
+
+body {
   background-color: $primary-color;
 }
 
@@ -29,6 +32,8 @@ main {
   flex-flow: column nowrap;
   justify-items: center;
   align-items: center;
+  margin-top: 24px;
+  gap: 24px;
 }
 
 
