@@ -1,13 +1,16 @@
 "use client";
 import "./styles.scss";
+import { useModalContext } from "@/context/modal-provider";
 
 const AddTaskBtn = () => {
-  const handleClick = () => {
-    console.log("clickou");
-  };
+  const { callAddModal, setCallAddModal } = useModalContext();
 
   return (
-    <button type="button" className="add-task-btn" onClick={handleClick}>
+    <button
+      type="button"
+      className="add-task-btn"
+      onClick={(): void => setCallAddModal(!callAddModal)}
+    >
       Adicionar tarefa
     </button>
   );
