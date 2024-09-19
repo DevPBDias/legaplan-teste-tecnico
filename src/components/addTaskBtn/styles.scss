@@ -11,5 +11,10 @@
     line-height: 19.36px;
     letter-spacing: -0.02em;
     text-align: center;
-    margin-top: 24px;
 }
+
+@media (max-width: 768px) {
+    .add-task-btn {
+        width: 100%;
+    }
+  }
