@@ -42,6 +42,7 @@ const DoneTaskCard = ({ data }: DataProps) => {
           type="checkbox"
           onClick={handleCheck}
           checked
+          readOnly
           name={data}
           value={data}
           id="checkTask"
