@@ -15,23 +15,25 @@ const DeleteTaskModal = () => {
   };
 
   return (
-    <section className="modal-container">
-      <h3>Deletar tarefa</h3>
-      <p className="subtitle-modal">
-        Tem certeza que você deseja deletar essa tarefa?
-      </p>
-      <div className="btns-container">
-        <button
-          type="button"
-          onClick={() => setCallDeleteModal(!callDeleteModal)}
-        >
-          Cancelar
-        </button>
-        <button className="delete-btn" type="button" onClick={handleClick}>
-          Deletar
-        </button>
-      </div>
-    </section>
+    <main className="modal-container">
+      <section className="modal-content">
+        <h3>Deletar tarefa</h3>
+        <p className="subtitle-modal">
+          Tem certeza que você deseja deletar essa tarefa?
+        </p>
+        <div className="btns-container">
+          <button
+            type="button"
+            onClick={() => setCallDeleteModal(!callDeleteModal)}
+          >
+            Cancelar
+          </button>
+          <button className="delete-btn" type="button" onClick={handleClick}>
+            Deletar
+          </button>
+        </div>
+      </section>
+    </main>
   );
 };
 

@@ -19,22 +19,10 @@ const TaskCard = ({ data }: DataProps) => {
     setCallDeleteModal(!callDeleteModal);
   };
 
-  const handleCheck = ({ target }: any) => {
-    changeTask(target.value);
-  };
-
   return (
     <section>
-      <label htmlFor="checkTask">
-        <input
-          type="checkbox"
-          onClick={handleCheck}
-          name={data}
-          value={data}
-          id="checkTask"
-        />
-        {data}
-      </label>
+      <input type="checkbox" name={data} value={data} id="checkTask" />
+      <label htmlFor="checkTask">{data}</label>
       <button type="button" className="trash-btn" onClick={handleClick}>
         <Image src={trashIcon} alt="Icon to delete task" />
       </button>

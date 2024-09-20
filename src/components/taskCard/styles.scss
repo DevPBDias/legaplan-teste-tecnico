@@ -1,23 +1,27 @@
 section {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
     height: 56px;
     padding: 16px;
     border-radius: 8px;
+    gap: 8px;
     border: 1px dashed rgba(215, 221, 233, 1);
 
-    label {
+    .container {
         display: flex;
         flex-flow: row nowrap;
         justify-items: center;
         align-items: center;
         gap: 16px;
-        color:rgba(0, 0, 0, 1);
 
-        input {
+        label {
+            color:rgba(0, 0, 0, 1);
+        }
+
+        input[type='checkbox'] {
             width: 24px;
             height: 24px;
             padding: 3px;
@@ -26,18 +30,13 @@ section {
             color: rgba(176, 187, 209, 1);
             accent-color: rgba(176, 187, 209, 1);
         }
-
-        input:checked::after {
-            border: 1px solid rgba(7, 150, 211, 1);
-            color: rgba(7, 150, 211, 1);
-            accent-color: rgba(160, 220, 246, 1);
-        }
     }
 
     .trash-btn {
         width: 24px;
         height: 24px;
         border: none;
+        margin-left: auto;
         background: none;
     }
 }
