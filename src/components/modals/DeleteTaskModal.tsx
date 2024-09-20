@@ -6,10 +6,11 @@ import { useState } from "react";
 
 const DeleteTaskModal = () => {
   const { callDeleteModal, setCallDeleteModal } = useModalContext();
-  const { taskToDelete, deleteTasks } = useTaskContext();
+  const { taskToDelete, deleteTasks, removeStorage } = useTaskContext();
 
   const handleClick = () => {
     deleteTasks(taskToDelete);
+    removeStorage("tasks", taskToDelete);
     setCallDeleteModal(!callDeleteModal);
   };
 

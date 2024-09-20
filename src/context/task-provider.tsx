@@ -11,6 +11,8 @@ interface TaskProps {
   setTaskToDelete: React.Dispatch<React.SetStateAction<string>>;
   addNewTasks: (newTask: string) => void;
   deleteTasks: (deletedTask: string) => void;
+  addStorage: (key: string, value: string) => void;
+  removeStorage: (key: string, value: string) => void;
 }
 
 export const TaskContext = createContext<TaskProps | undefined>(undefined);
@@ -33,6 +35,38 @@ export const TaskProvider = ({ children }: { children: React.ReactNode }) => {
     setTasks(newTasks);
   };
 
+  useEffect(() => {
+    const showStorage = () => {
+      const checkTaskStorage = localStorage.getItem("tasks");
+      const checkDoneTaskStorage = localStorage.getItem("doneTasks");
+
+      if (!checkTaskStorage || !checkDoneTaskStorage) {
+        localStorage.setItem("tasks", JSON.stringify([]));
+        localStorage.setItem("doneTasks", JSON.stringify([]));
+      } else {
+        const storedTasks = JSON.parse(localStorage.getItem("tasks") as any);
+        const storedDoneTasks = JSON.parse(
+          localStorage.getItem("doneTasks") as any
+        );
+        setTasks(storedTasks);
+        setDoneTasks(storedDoneTasks);
+      }
+    };
+    showStorage();
+  }, []);
+
+  const addStorage = (key: string, value: string) => {
+    const checkStorage = JSON.parse(localStorage.getItem(key) as any);
+    checkStorage?.push(value);
+    localStorage.setItem(key, JSON.stringify(checkStorage));
+  };
+
+  const removeStorage = (key: string, value: string) => {
+    const checkStorage = JSON.parse(localStorage.getItem(key) as any);
+    const newStorage = checkStorage?.filter((item: any) => item !== value);
+    localStorage.setItem(key, JSON.stringify(newStorage));
+  };
+
   return (
     <TaskContext.Provider
       value={{
@@ -44,6 +78,8 @@ export const TaskProvider = ({ children }: { children: React.ReactNode }) => {
         setTaskToDelete,
         addNewTasks,
         deleteTasks,
+        addStorage,
+        removeStorage,
       }}
     >
       {children}

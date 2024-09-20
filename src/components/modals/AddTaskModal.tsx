@@ -6,11 +6,12 @@ import { useTaskContext } from "@/context/task-provider";
 
 const AddTaskModal = () => {
   const { callAddModal, setCallAddModal } = useModalContext();
-  const { addNewTasks, tasks } = useTaskContext();
+  const { addNewTasks, addStorage } = useTaskContext();
   const [task, setTask] = useState<string>("");
 
   const handleClick = () => {
     addNewTasks(task);
+    addStorage("tasks", task);
     setCallAddModal(!callAddModal);
   };
 
