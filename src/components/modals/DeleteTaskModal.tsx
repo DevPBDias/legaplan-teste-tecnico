@@ -1,12 +1,16 @@
 "use client";
 import { useModalContext } from "@/context/modal-provider";
 import "./styles.scss";
+import { useTaskContext } from "@/context/task-provider";
+import { useState } from "react";
 
 const DeleteTaskModal = () => {
   const { callDeleteModal, setCallDeleteModal } = useModalContext();
+  const { taskToDelete, deleteTasks } = useTaskContext();
 
   const handleClick = () => {
-    console.log("clickou");
+    deleteTasks(taskToDelete);
+    setCallDeleteModal(!callDeleteModal);
   };
 
   return (

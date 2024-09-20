@@ -1,12 +1,17 @@
 "use client";
 import { useModalContext } from "@/context/modal-provider";
 import "./styles.scss";
+import { useState } from "react";
+import { useTaskContext } from "@/context/task-provider";
 
 const AddTaskModal = () => {
   const { callAddModal, setCallAddModal } = useModalContext();
+  const { addNewTasks, tasks } = useTaskContext();
+  const [task, setTask] = useState<string>("");
 
   const handleClick = () => {
-    console.log("clickou");
+    addNewTasks(task);
+    setCallAddModal(!callAddModal);
   };
 
   return (
@@ -19,7 +24,9 @@ const AddTaskModal = () => {
         <input
           className="input-modal"
           type="text"
-          name=""
+          name="task"
+          value={task}
+          onChange={({ target }) => setTask(target.value)}
           id="title"
           placeholder="Digite"
         />

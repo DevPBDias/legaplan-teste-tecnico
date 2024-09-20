@@ -3,6 +3,7 @@ import { Inter_Tight } from "next/font/google";
 import "./_base.scss";
 import Header from "@/components/header/Header";
 import { ModalProvider } from "../context/modal-provider";
+import { TaskProvider } from "@/context/task-provider";
 
 const inter_tight = Inter_Tight({
   weight: ["400", "500", "700"],
@@ -25,7 +26,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter_tight.className}>
         <Header />
-        <ModalProvider>{children}</ModalProvider>
+        <ModalProvider>
+          <TaskProvider>{children}</TaskProvider>
+        </ModalProvider>
       </body>
     </html>
   );
