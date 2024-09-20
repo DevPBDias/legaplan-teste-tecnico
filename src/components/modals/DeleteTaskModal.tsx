@@ -2,16 +2,24 @@
 import { useModalContext } from "@/context/modal-provider";
 import "./styles.scss";
 import { useTaskContext } from "@/context/task-provider";
-import { useState } from "react";
 
 const DeleteTaskModal = () => {
   const { callDeleteModal, setCallDeleteModal } = useModalContext();
-  const { taskToDelete, deleteTasks, removeStorage } = useTaskContext();
+  const { taskToDelete, deleteTasks, removeStorage, tasks, deleteDoneTasks } =
+    useTaskContext();
 
   const handleClick = () => {
-    deleteTasks(taskToDelete);
-    removeStorage("tasks", taskToDelete);
-    setCallDeleteModal(!callDeleteModal);
+    const findInTasks = tasks.find((item) => item === taskToDelete);
+
+    if (findInTasks) {
+      deleteTasks(taskToDelete);
+      removeStorage("tasks", taskToDelete);
+      setCallDeleteModal(!callDeleteModal);
+    } else {
+      deleteDoneTasks(taskToDelete);
+      removeStorage("doneTasks", taskToDelete);
+      setCallDeleteModal(!callDeleteModal);
+    }
   };
 
   return (

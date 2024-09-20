@@ -11,9 +11,9 @@ interface TaskProps {
   setTaskToDelete: React.Dispatch<React.SetStateAction<string>>;
   addNewTasks: (newTask: string) => void;
   deleteTasks: (deletedTask: string) => void;
+  deleteDoneTasks: (deletedTask: string) => void;
   addStorage: (key: string, value: string) => void;
   removeStorage: (key: string, value: string) => void;
-  changeTask: (task: string) => void;
 }
 
 export const TaskContext = createContext<TaskProps | undefined>(undefined);
@@ -36,18 +36,9 @@ export const TaskProvider = ({ children }: { children: React.ReactNode }) => {
     setTasks(newTasks);
   };
 
-  const changeTask = (task: string) => {
-    const foundInTasks = tasks.find((item) => item === task);
-
-    if (foundInTasks) {
-      setDoneTasks([...doneTasks, task]);
-      const newTasks = tasks.filter((item) => item !== task);
-      setTasks(newTasks);
-    } else {
-      setTasks([...tasks, task]);
-      const newTasks = doneTasks.filter((item) => item !== task);
-      setDoneTasks(newTasks);
-    }
+  const deleteDoneTasks = (deletedTask: string) => {
+    const newTasks = doneTasks.filter((item) => item !== deletedTask);
+    setDoneTasks(newTasks);
   };
 
   useEffect(() => {
@@ -97,9 +88,9 @@ export const TaskProvider = ({ children }: { children: React.ReactNode }) => {
         setTaskToDelete,
         addNewTasks,
         deleteTasks,
+        deleteDoneTasks,
         addStorage,
         removeStorage,
-        changeTask,
       }}
     >
       {children}

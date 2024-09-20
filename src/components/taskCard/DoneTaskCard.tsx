@@ -10,7 +10,7 @@ interface DataProps {
   data: string;
 }
 
-const TaskCard = ({ data }: DataProps) => {
+const DoneTaskCard = ({ data }: DataProps) => {
   const { callDeleteModal, setCallDeleteModal } = useModalContext();
   const {
     setTaskToDelete,
@@ -28,19 +28,20 @@ const TaskCard = ({ data }: DataProps) => {
   };
 
   const handleCheck = ({ target }: any) => {
-    const newTasks = tasks.filter((item) => item !== target.value);
-    setTasks(newTasks);
-    removeStorage("tasks", target.value);
-    setDoneTasks([...doneTasks, target.value]);
-    addStorage("doneTasks", target.value);
+    const newTasks = doneTasks.filter((item) => item !== target.value);
+    setDoneTasks(newTasks);
+    removeStorage("doneTasks", target.value);
+    setTasks([...tasks, target.value]);
+    addStorage("tasks", target.value);
   };
 
   return (
     <section className="card-task">
       <input
         type="checkbox"
-        name={data}
         onClick={handleCheck}
+        checked
+        name={data}
         value={data}
         id="checkTask"
       />
@@ -52,4 +53,4 @@ const TaskCard = ({ data }: DataProps) => {
   );
 };
 
-export default TaskCard;
+export default DoneTaskCard;
