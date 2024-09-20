@@ -37,15 +37,19 @@ const DoneTaskCard = ({ data }: DataProps) => {
 
   return (
     <section className="card-task">
-      <input
-        type="checkbox"
-        onClick={handleCheck}
-        checked
-        name={data}
-        value={data}
-        id="checkTask"
-      />
-      <label htmlFor="checkTask">{data}</label>
+      <div className="checkbox-container">
+        <input
+          type="checkbox"
+          onClick={handleCheck}
+          checked
+          name={data}
+          value={data}
+          id="checkTask"
+        />
+        <label className="checked-doneTask" htmlFor="checkTask">
+          {data}
+        </label>
+      </div>
       <button type="button" className="trash-btn" onClick={handleClick}>
         <Image src={trashIcon} alt="Icon to delete task" />
       </button>

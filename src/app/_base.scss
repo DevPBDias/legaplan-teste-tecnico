@@ -23,6 +23,11 @@ $box-shadow: 0px 24px 48px -12px rgba(16, 24, 40, 0.18);
   color: $text-primary-color;
 }
 
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 body {
   background-color: $primary-color;
 }
