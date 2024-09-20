@@ -12,17 +12,27 @@ interface DataProps {
 
 const TaskCard = ({ data }: DataProps) => {
   const { callDeleteModal, setCallDeleteModal } = useModalContext();
-  const { setTaskToDelete } = useTaskContext();
+  const { setTaskToDelete, changeTask } = useTaskContext();
 
   const handleClick = () => {
     setTaskToDelete(data);
     setCallDeleteModal(!callDeleteModal);
   };
 
+  const handleCheck = ({ target }: any) => {
+    changeTask(target.value);
+  };
+
   return (
     <section>
       <label htmlFor="checkTask">
-        <input type="checkbox" name={data} value={data} id="checkTask" />
+        <input
+          type="checkbox"
+          onClick={handleCheck}
+          name={data}
+          value={data}
+          id="checkTask"
+        />
         {data}
       </label>
       <button type="button" className="trash-btn" onClick={handleClick}>

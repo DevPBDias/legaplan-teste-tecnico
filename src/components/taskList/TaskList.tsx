@@ -14,7 +14,7 @@ const TaskList = () => {
       <h3 className="title">Tarefas finalizadas</h3>
       <div>
         {doneTasks &&
-          doneTasks.map((item) => <TaskCard key={item} data={item} />)}
+          doneTasks?.map((item) => <TaskCard key={item} data={item} />)}
       </div>
     </section>
   );

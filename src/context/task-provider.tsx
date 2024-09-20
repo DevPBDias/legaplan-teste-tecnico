@@ -13,6 +13,7 @@ interface TaskProps {
   deleteTasks: (deletedTask: string) => void;
   addStorage: (key: string, value: string) => void;
   removeStorage: (key: string, value: string) => void;
+  changeTask: (task: string) => void;
 }
 
 export const TaskContext = createContext<TaskProps | undefined>(undefined);
@@ -35,20 +36,38 @@ export const TaskProvider = ({ children }: { children: React.ReactNode }) => {
     setTasks(newTasks);
   };
 
+  const changeTask = (task: string) => {
+    const foundInTasks = tasks.find((item) => item === task);
+
+    if (foundInTasks) {
+      setDoneTasks([...doneTasks, task]);
+      const newTasks = tasks.filter((item) => item !== task);
+      setTasks(newTasks);
+    } else {
+      setTasks([...tasks, task]);
+      const newTasks = doneTasks.filter((item) => item !== task);
+      setDoneTasks(newTasks);
+    }
+  };
+
   useEffect(() => {
     const showStorage = () => {
       const checkTaskStorage = localStorage.getItem("tasks");
       const checkDoneTaskStorage = localStorage.getItem("doneTasks");
 
-      if (!checkTaskStorage || !checkDoneTaskStorage) {
+      if (!checkTaskStorage) {
         localStorage.setItem("tasks", JSON.stringify([]));
-        localStorage.setItem("doneTasks", JSON.stringify([]));
       } else {
         const storedTasks = JSON.parse(localStorage.getItem("tasks") as any);
+        setTasks(storedTasks);
+      }
+
+      if (!checkDoneTaskStorage) {
+        localStorage.setItem("doneTasks", JSON.stringify([]));
+      } else {
         const storedDoneTasks = JSON.parse(
           localStorage.getItem("doneTasks") as any
         );
-        setTasks(storedTasks);
         setDoneTasks(storedDoneTasks);
       }
     };
@@ -80,6 +99,7 @@ export const TaskProvider = ({ children }: { children: React.ReactNode }) => {
         deleteTasks,
         addStorage,
         removeStorage,
+        changeTask,
       }}
     >
       {children}
