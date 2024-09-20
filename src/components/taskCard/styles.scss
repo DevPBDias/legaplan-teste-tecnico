@@ -1,4 +1,4 @@
-section {
+.card-task {
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-start;
@@ -39,4 +39,8 @@ section {
         margin-left: auto;
         background: none;
     }
+}
+
+.card-task:hover {
+    background: rgba(247, 249, 253, 1);
 }

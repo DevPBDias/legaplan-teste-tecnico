@@ -20,7 +20,7 @@ const TaskCard = ({ data }: DataProps) => {
   };
 
   return (
-    <section>
+    <section className="card-task">
       <input type="checkbox" name={data} value={data} id="checkTask" />
       <label htmlFor="checkTask">{data}</label>
       <button type="button" className="trash-btn" onClick={handleClick}>
