@@ -5,6 +5,8 @@ import "./styles.scss";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import Image from "next/image";
+import logo from "@/assets/images/logo_FocalPoint.png";
 
 const userSchema = z.object({
   user: z.string().min(3, "Nome curto! Por favor inserir mais de 2 caracteres"),
@@ -41,10 +43,12 @@ const UserNameModal = () => {
   return (
     <main className="modal-container">
       <form onSubmit={handleSubmit(handleClick)} className="modal-content">
-        <h3 className="modal-title">Novo por aqui? Como você se chama?</h3>
+        <picture className="modal-title">
+          <Image src={logo} alt="Logo FocalPoint" priority />
+        </picture>
         <fieldset>
           <label className="label-modal" htmlFor="title">
-            Nome
+            Novo por aqui? Como você se chama?
           </label>
           <input
             className={`input-modal ${errors.user ? "error-border" : ""}`}
