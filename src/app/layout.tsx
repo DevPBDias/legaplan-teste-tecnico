@@ -24,8 +24,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter_tight.className}>
-        <Header />
-        <GlobalProvider>{children}</GlobalProvider>
+        <GlobalProvider>
+          <Header />
+          {children}
+        </GlobalProvider>
       </body>
     </html>
   );

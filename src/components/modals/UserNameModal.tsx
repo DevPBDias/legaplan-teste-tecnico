@@ -1,17 +1,25 @@
 "use client";
 import { useModalContext } from "@/context/providers/modal-provider";
 import { useUserContext } from "@/context/providers/user-provider";
-import { useTaskContext } from "@/context/providers/task-provider";
 import "./styles.scss";
+import { useState } from "react";
 
-const AddTaskModal = () => {
+const UserNameModal = () => {
   const { callUserModal, setCallUserModal } = useModalContext();
-  const { addStorage } = useTaskContext();
-  const { userName, setUserName } = useUserContext();
+  const { userName, setUserName, updateUserStorage } = useUserContext();
+  const [newName, setNewName] = useState("");
 
   const handleClick = () => {
-    addStorage("user", userName);
+    setUserName(newName);
+
+    console.log(newName);
+    console.log(userName);
+
+    updateUserStorage(newName);
+    console.log(newName);
+
     setCallUserModal(!callUserModal);
+    setNewName("");
   };
 
   return (
@@ -26,14 +34,14 @@ const AddTaskModal = () => {
             className="input-modal"
             type="text"
             name="name"
-            value={userName}
-            onChange={({ target }) => setUserName(target.value)}
+            value={newName}
+            onChange={({ target }) => setNewName(target.value)}
             id="title"
             placeholder="Digite"
           />
         </fieldset>
         <div className="btns-container">
-          <button type="button" onClick={() => setUserName("")}>
+          <button type="button" onClick={() => setNewName("")}>
             Limpar
           </button>
           <button className="add-btn" type="button" onClick={handleClick}>
@@ -45,4 +53,4 @@ const AddTaskModal = () => {
   );
 };
 
-export default AddTaskModal;
+export default UserNameModal;
