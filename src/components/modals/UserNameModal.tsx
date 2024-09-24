@@ -47,7 +47,7 @@ const UserNameModal = () => {
             Nome
           </label>
           <input
-            className="input-modal"
+            className={`input-modal ${errors.user ? "error-border" : ""}`}
             type="text"
             {...register("user")}
             id="title"

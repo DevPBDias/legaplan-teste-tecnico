@@ -46,7 +46,7 @@ const AddTaskModal = () => {
             Título
           </label>
           <input
-            className="input-modal"
+            className={`input-modal ${errors.task ? "error-border" : ""}`}
             type="text"
             {...register("task")}
             id="title"
