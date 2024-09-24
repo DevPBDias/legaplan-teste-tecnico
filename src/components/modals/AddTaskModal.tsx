@@ -1,7 +1,6 @@
 "use client";
 import { useModalContext } from "@/context/providers/modal-provider";
 import "./styles.scss";
-import { useState } from "react";
 import { useTaskContext } from "@/context/providers/task-provider";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";

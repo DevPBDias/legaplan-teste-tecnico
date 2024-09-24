@@ -2,29 +2,45 @@
 import { useModalContext } from "@/context/providers/modal-provider";
 import { useUserContext } from "@/context/providers/user-provider";
 import "./styles.scss";
-import { useState } from "react";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
+const userSchema = z.object({
+  user: z.string().min(3, "Nome curto! Por favor inserir mais de 2 caracteres"),
+});
+
+type ModaltData = z.infer<typeof userSchema>;
 
 const UserNameModal = () => {
   const { callUserModal, setCallUserModal } = useModalContext();
-  const { userName, setUserName, updateUserStorage } = useUserContext();
-  const [newName, setNewName] = useState("");
+  const { setUserName, updateUserStorage } = useUserContext();
 
-  const handleClick = () => {
-    setUserName(newName);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitSuccessful },
+    reset,
+    getValues,
+  } = useForm<ModaltData>({
+    resolver: zodResolver(userSchema),
+  });
 
-    console.log(newName);
-    console.log(userName);
+  const resetForm = () => {
+    if (isSubmitSuccessful) reset({ user: "" });
+  };
 
-    updateUserStorage(newName);
-    console.log(newName);
-
+  const handleClick = (data: ModaltData) => {
+    console.log(data);
+    setUserName(getValues("user"));
+    updateUserStorage(getValues("user"));
+    resetForm();
     setCallUserModal(!callUserModal);
-    setNewName("");
   };
 
   return (
     <main className="modal-container">
-      <section className="modal-content">
+      <form onSubmit={handleSubmit(handleClick)} className="modal-content">
         <h3 className="modal-title">Novo por aqui? Como você se chama?</h3>
         <fieldset>
           <label className="label-modal" htmlFor="title">
@@ -33,22 +49,23 @@ const UserNameModal = () => {
           <input
             className="input-modal"
             type="text"
-            name="name"
-            value={newName}
-            onChange={({ target }) => setNewName(target.value)}
+            {...register("user")}
             id="title"
             placeholder="Digite"
           />
+          {errors.user && (
+            <span className="error-msg">{errors.user.message}</span>
+          )}
         </fieldset>
         <div className="btns-container">
-          <button type="button" onClick={() => setNewName("")}>
+          <button type="button" onClick={() => reset({ user: "" })}>
             Limpar
           </button>
-          <button className="add-btn" type="button" onClick={handleClick}>
+          <button className="add-btn" type="submit">
             Entrar
           </button>
         </div>
-      </section>
+      </form>
     </main>
   );
 };
