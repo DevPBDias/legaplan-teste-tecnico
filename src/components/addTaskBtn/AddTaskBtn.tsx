@@ -1,6 +1,6 @@
 "use client";
 import "./styles.scss";
-import { useModalContext } from "@/context/modal-provider";
+import { useModalContext } from "@/context/providers/modal-provider";
 
 const AddTaskBtn = () => {
   const { callAddModal, setCallAddModal } = useModalContext();

@@ -1,44 +1,43 @@
 "use client";
 import { useModalContext } from "@/context/providers/modal-provider";
-import "./styles.scss";
-import { useState } from "react";
+import { useUserContext } from "@/context/providers/user-provider";
 import { useTaskContext } from "@/context/providers/task-provider";
+import "./styles.scss";
 
 const AddTaskModal = () => {
-  const { callAddModal, setCallAddModal } = useModalContext();
-  const { addNewTasks, addStorage } = useTaskContext();
-  const [task, setTask] = useState<string>("");
+  const { callUserModal, setCallUserModal } = useModalContext();
+  const { addStorage } = useTaskContext();
+  const { userName, setUserName } = useUserContext();
 
   const handleClick = () => {
-    addNewTasks(task);
-    addStorage("tasks", task);
-    setCallAddModal(!callAddModal);
+    addStorage("user", userName);
+    setCallUserModal(!callUserModal);
   };
 
   return (
     <main className="modal-container">
       <section className="modal-content">
-        <h3 className="modal-title">Nova tarefa</h3>
+        <h3 className="modal-title">Novo por aqui? Como você se chama?</h3>
         <fieldset>
           <label className="label-modal" htmlFor="title">
-            Título
+            Nome
           </label>
           <input
             className="input-modal"
             type="text"
-            name="task"
-            value={task}
-            onChange={({ target }) => setTask(target.value)}
+            name="name"
+            value={userName}
+            onChange={({ target }) => setUserName(target.value)}
             id="title"
             placeholder="Digite"
           />
         </fieldset>
         <div className="btns-container">
-          <button type="button" onClick={() => setCallAddModal(!callAddModal)}>
-            Cancelar
+          <button type="button" onClick={() => setUserName("")}>
+            Limpar
           </button>
           <button className="add-btn" type="button" onClick={handleClick}>
-            Adicionar
+            Entrar
           </button>
         </div>
       </section>

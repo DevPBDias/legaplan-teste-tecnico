@@ -1,7 +1,7 @@
 "use client";
-import { useModalContext } from "@/context/modal-provider";
+import { useModalContext } from "@/context/providers/modal-provider";
 import "./styles.scss";
-import { useTaskContext } from "@/context/task-provider";
+import { useTaskContext } from "@/context/providers/task-provider";
 
 const DeleteTaskModal = () => {
   const { callDeleteModal, setCallDeleteModal } = useModalContext();

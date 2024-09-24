@@ -1,4 +1,4 @@
-import { useTaskContext } from "@/context/task-provider";
+import { useTaskContext } from "@/context/providers/task-provider";
 import TaskCard from "../taskCard/TaskCard";
 import "./styles.scss";
 import DoneTaskCard from "../taskCard/DoneTaskCard";

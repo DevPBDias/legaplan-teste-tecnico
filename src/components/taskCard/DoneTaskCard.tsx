@@ -3,8 +3,8 @@
 import Image from "next/image";
 import trashIcon from "@/assets/icons/trash.png";
 import "./styles.scss";
-import { useModalContext } from "@/context/modal-provider";
-import { useTaskContext } from "@/context/task-provider";
+import { useModalContext } from "@/context/providers/modal-provider";
+import { useTaskContext } from "@/context/providers/task-provider";
 
 interface DataProps {
   data: string;
