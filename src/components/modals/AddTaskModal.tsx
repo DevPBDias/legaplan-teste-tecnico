@@ -20,7 +20,6 @@ const AddTaskModal = () => {
     handleSubmit,
     formState: { errors, isSubmitSuccessful },
     reset,
-    getValues,
   } = useForm<ModaltData>({
     resolver: zodResolver(modalSchema),
   });
@@ -30,9 +29,8 @@ const AddTaskModal = () => {
   };
 
   const handleClick = (data: ModaltData) => {
-    console.log(data);
-    addNewTasks(getValues("task"));
-    addStorage("tasks", getValues("task"));
+    addNewTasks(data.task);
+    addStorage("tasks", data.task);
     resetForm();
     setCallAddModal(!callAddModal);
   };

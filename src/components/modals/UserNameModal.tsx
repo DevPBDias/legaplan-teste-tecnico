@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
 import logo from "@/assets/images/logo_FocalPoint.png";
+import { useEffect } from "react";
 
 const userSchema = z.object({
   user: z.string().min(3, "Nome curto! Por favor inserir mais de 2 caracteres"),
@@ -17,13 +18,11 @@ type ModaltData = z.infer<typeof userSchema>;
 const UserNameModal = () => {
   const { callUserModal, setCallUserModal } = useModalContext();
   const { setUserName, updateUserStorage } = useUserContext();
-
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitSuccessful },
     reset,
-    getValues,
   } = useForm<ModaltData>({
     resolver: zodResolver(userSchema),
   });
@@ -33,9 +32,8 @@ const UserNameModal = () => {
   };
 
   const handleClick = (data: ModaltData) => {
-    console.log(data);
-    setUserName(getValues("user"));
-    updateUserStorage(getValues("user"));
+    setUserName(data.user);
+    updateUserStorage(data.user);
     resetForm();
     setCallUserModal(!callUserModal);
   };

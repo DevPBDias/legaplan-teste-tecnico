@@ -22,21 +22,19 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const { setCallUserModal } = useModalContext();
 
   const updateUserStorage = (value: string) => {
-    const storedName = JSON.parse(localStorage.getItem("userName") as any);
-    if (storedName) localStorage.setItem("userName", JSON.stringify(value));
+    localStorage.setItem("userName", JSON.stringify(value));
   };
 
   useEffect(() => {
     const showStorage = () => {
-      const checkUserStorage = localStorage.getItem("userName");
-
-      if (checkUserStorage === "") setCallUserModal(true);
+      const checkUserStorage = JSON.parse(
+        localStorage.getItem("userName") as any
+      );
 
       if (!checkUserStorage) {
         localStorage.setItem("userName", JSON.stringify(""));
       } else {
-        const storedUser = JSON.parse(localStorage.getItem("userName") as any);
-        setUserName(storedUser);
+        setUserName(checkUserStorage);
       }
     };
     showStorage();
