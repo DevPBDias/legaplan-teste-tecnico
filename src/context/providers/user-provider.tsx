@@ -1,13 +1,6 @@
 "use client";
 
-import React, {
-  createContext,
-  use,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
-import { useModalContext } from "./modal-provider";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 interface UserProps {
   userName: string;
@@ -19,7 +12,6 @@ export const UserContext = createContext<UserProps | undefined>(undefined);
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [userName, setUserName] = useState("");
-  const { setCallUserModal } = useModalContext();
 
   const updateUserStorage = (value: string) => {
     localStorage.setItem("userName", JSON.stringify(value));

@@ -7,8 +7,6 @@ interface ModalProps {
   setCallAddModal: React.Dispatch<React.SetStateAction<boolean>>;
   callDeleteModal: boolean;
   setCallDeleteModal: React.Dispatch<React.SetStateAction<boolean>>;
-  callUserModal: boolean;
-  setCallUserModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const ModalContext = createContext<ModalProps | undefined>(undefined);
@@ -16,7 +14,6 @@ export const ModalContext = createContext<ModalProps | undefined>(undefined);
 export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
   const [callAddModal, setCallAddModal] = useState(false);
   const [callDeleteModal, setCallDeleteModal] = useState(false);
-  const [callUserModal, setCallUserModal] = useState(true);
 
   return (
     <ModalContext.Provider
@@ -25,8 +22,6 @@ export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
         setCallAddModal,
         callDeleteModal,
         setCallDeleteModal,
-        callUserModal,
-        setCallUserModal,
       }}
     >
       {children}
