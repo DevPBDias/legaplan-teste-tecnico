@@ -39,7 +39,7 @@ const UserNameModal = () => {
   };
 
   return (
-    <main className="modal-container">
+    <main className="modal-container bg-user-modal">
       <form onSubmit={handleSubmit(handleClick)} className="modal-content">
         <picture className="modal-title">
           <Image src={logo} alt="Logo FocalPoint" priority />

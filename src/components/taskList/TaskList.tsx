@@ -10,15 +10,12 @@ const TaskList = () => {
     <section className="card-container">
       <h3 className="title">Suas tarefas de hoje</h3>
       <div>
-        {tasks &&
-          tasks.map((item, index) => <TaskCard key={index} data={item} />)}
+        {tasks && tasks.map((item) => <TaskCard key={item} data={item} />)}
       </div>
       <h3 className="title">Tarefas finalizadas</h3>
       <div>
         {doneTasks &&
-          doneTasks?.map((item, index) => (
-            <DoneTaskCard key={index} data={item} />
-          ))}
+          doneTasks?.map((item) => <DoneTaskCard key={item} data={item} />)}
       </div>
     </section>
   );
