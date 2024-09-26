@@ -7,6 +7,7 @@ import AddTaskModal from "@/components/modals/AddTaskModal";
 import DeleteTaskModal from "@/components/modals/DeleteTaskModal";
 import TaskList from "@/components/taskList/TaskList";
 import Loading from "./loading";
+import BackBtn from "@/components/backBtn/BackBtn";
 
 export default function Home() {
   const { callAddModal, callDeleteModal } = useModalContext();
@@ -27,6 +28,7 @@ export default function Home() {
       <AddTaskBtn />
       {callAddModal && <AddTaskModal />}
       {callDeleteModal && <DeleteTaskModal />}
+      <BackBtn />
     </main>
   );
 }

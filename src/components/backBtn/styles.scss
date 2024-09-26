@@ -1,0 +1,29 @@
+.back-btn {
+    position: absolute;
+    z-index: 5;
+    bottom: -60%;
+    right: 56px;
+    background-color: #FFFFFF;
+    color: #0796D3;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 2px solid #0796D3;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19.36px;
+    letter-spacing: -0.02em;
+    text-align: center;
+
+    &:hover {
+        background-color: #0796D3;
+        color: #FFFFFF;
+        border: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .back-btn {
+        bottom: -30%;
+        right: 24px;
+    }
+}
